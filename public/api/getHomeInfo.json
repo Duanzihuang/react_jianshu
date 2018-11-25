@@ -1,0 +1,59 @@
+{
+    "success":true,
+    "data":{
+        "articleList":[
+            {
+                "id":1,
+                "title":"遭遇凤凰男的背叛后，她得了艾滋",
+                "content":"作者：倾城小酒馆 跟凤凰男在一起的风险有多大？陈欣在受到摧毁性的伤害之前，从来没有想过这个问题。 1 陈欣的老公名叫何小康，两人是大学同班同学，...",
+                "imgUrl":"//upload-images.jianshu.io/upload_images/5873903-eee9cde8fd957519?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240"
+            },
+            {
+                "id":2,
+                "title":"无论炒什么青菜，只要在下油锅前，加上这一步，出锅后鲜亮又美味",
+                "content":"一日三餐中，每一餐都少不了绿色蔬菜，每天吃一些绿色蔬菜，不仅有利于身体健康，还可以帮助通肠润便，尤其是秋天，天气特别的干燥，绿色蔬菜的水分比较大...",
+                "imgUrl":"//upload-images.jianshu.io/upload_images/1065579-a734aa303de74504?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240"
+            },
+            {
+                "id":3,
+                "title":"奚梦瑶转型成“炫腹”女王，马甲线惹网友热议：身材好就是任性！",
+                "content":"【注：本文由〖Aidress〗原创发布，禁止转载。】 我国超模奚梦瑶因参加某卫视综艺节目而被更多网友熟知，身材与颜值兼具的奚梦瑶行事非常高调，曾...",
+                "imgUrl":"//upload-images.jianshu.io/upload_images/3949843-9571e4b77fc8d6c1.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240"
+            },
+            {
+                "id":4,
+                "title":"这3种建议，烂在肚子里也别向领导提！否则别想升职！",
+                "content":"大家都说英明的领导知人善用，喜欢用贤才，他们喜欢给自己提出建议的下属。所以很多领导都会在下属面前说，欢迎大家提意见、多多益善。于是很多员工都以为...",
+                "imgUrl":"//upload-images.jianshu.io/upload_images/1905082-f132ef6c56e30f18.png?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240"
+            },
+            {
+                "id":5,
+                "title":"这5个曾红透半边天的明星被封杀，居然都是因为……",
+                "content":"1.杨丞琳 至于当初因为出演台湾偶像剧， 《恶魔在身边》、《海派甜心》、《不良笑花》等等， 在大陆被称为“甜心教主”的杨丞琳被封杀大概完全因为对...",
+                "imgUrl":"//upload-images.jianshu.io/upload_images/2321684-fa65f21dfe7da205?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240"
+            }
+        ],
+        "recommendList":[
+            {
+                "id":1,
+                "imgUrl":"//cdn2.jianshu.io/assets/web/banner-s-3-7123fd94750759acf7eca05b871e9d17.png"
+            },
+            {
+                "id":2,
+                "imgUrl":"//cdn2.jianshu.io/assets/web/banner-s-4-b70da70d679593510ac93a172dfbaeaa.png"
+            },
+            {
+                "id":3,
+                "imgUrl":"//cdn2.jianshu.io/assets/web/banner-s-7-1a0222c91694a1f38e610be4bf9669be.png"
+            },
+            {
+                "id":4,
+                "imgUrl":"//cdn2.jianshu.io/assets/web/banner-s-5-4ba25cf5041931a0ed2062828b4064cb.png"
+            },
+            {
+                "id":5,
+                "imgUrl":"//cdn2.jianshu.io/assets/web/banner-s-6-c4d6335bfd688f2ca1115b42b04c28a7.png"
+            }
+        ]
+    }
+}
