@@ -51,6 +51,20 @@ export const ListItemRight = styled.div`
   }
 `;
 
+export const LoadMore = styled.div`
+  width:95%;
+  height:40px;
+  line-height:40px;
+  border-radius:20px;
+  border:1px solid #ccc;
+  color:#fff;
+  background:#a5a5a5;
+  text-align:center;
+  font-size:12px;
+  margin:30px 0px;
+  cursor:pointer;
+`
+
 export const HeaderRecommond = styled.div`
   width: 280px;
   height: 50px;
@@ -68,3 +82,15 @@ export const HeaderRight = styled.div`
   //   background: purple;
   float: right;
 `;
+
+export const BackToTop = styled.div`
+  width:60px;
+  height:60px;
+  line-height:60px;
+  border:1px solid #ccc;
+  position:fixed;
+  right:100px;
+  bottom:100px;
+  font-size:12px;
+  text-align:center;
+`

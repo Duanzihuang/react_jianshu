@@ -7,6 +7,12 @@ const changeHomeData = data => ({
   recommendList: data.recommendList
 });
 
+const addArticleData = (data, nextPage) => ({
+  type: constants.GET_MORE_DATA,
+  list: data.list,
+  nextPage
+});
+
 export const getHomeInfoData = () => {
   return dispatch => {
     axios.get("/api/getHomeInfo.json").then(response => {
@@ -14,3 +20,16 @@ export const getHomeInfoData = () => {
     });
   };
 };
+
+export const getArticleListData = pageIndex => {
+  return dispatch => {
+    axios.get(`/api/getArticleList.json?page=${pageIndex}`).then(response => {
+      dispatch(addArticleData(response.data, pageIndex + 1));
+    });
+  };
+};
+
+export const toggleShowToTop = showToTop => ({
+  type: constants.SHOW_TO_TOP,
+  showToTop
+});
