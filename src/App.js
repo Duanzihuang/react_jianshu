@@ -9,7 +9,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import Header from "./pages/header";
 import Home from "./pages/home";
 import Detail from "./pages/detail";
-import Login from './pages/login'
+import Login from './pages/login/loadable.js'
 import Write from './pages/write'
 
 class App extends Component {
