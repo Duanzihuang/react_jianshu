@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 
 import { actionCreators } from "./store/";
 
+import { Link } from "react-router-dom";
+
 import {
   HeaderWrapper,
   HeaderLeft,
@@ -17,13 +19,19 @@ import {
 } from "./style";
 
 class Home extends Component {
-  goToTop(){
-    window.scroll(0,0)
+  goToTop() {
+    window.scroll(0, 0);
   }
 
   render() {
-    const { articleList,pageIndex, recommendList,getArticleList,showToTop } = this.props;
-    
+    const {
+      articleList,
+      pageIndex,
+      recommendList,
+      getArticleList,
+      showToTop
+    } = this.props;
+
     return (
       <HeaderWrapper>
         <HeaderLeft>
@@ -31,21 +39,29 @@ class Home extends Component {
             src="//upload.jianshu.io/admin_banners/web_images/4581/8cfb95afa4ac98683ce1b9ab0f835f425e6a7df5.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540"
             alt="540"
           />
-          {articleList.map((article,index) => {
+          {articleList.map((article, index) => {
+            // <ListItem key={article.get("id")}>
             return (
-              // <ListItem key={article.get("id")}>
-              <ListItem key={index}>
-                <ListItemLeft>
-                  <h3>{article.get("title")}</h3>
-                  <p>{article.get("content")}</p>
-                </ListItemLeft>
-                <ListItemRight>
-                  <img src={article.get("imgUrl")} alt="" />
-                </ListItemRight>
-              </ListItem>
+              <Link key={index} to={"/detail/" + article.get("id")}>
+                <ListItem>
+                  <ListItemLeft>
+                    <h3>{article.get("title")}</h3>
+                    <p>{article.get("content")}</p>
+                  </ListItemLeft>
+                  <ListItemRight>
+                    <img src={article.get("imgUrl")} alt="" />
+                  </ListItemRight>
+                </ListItem>
+              </Link>
             );
           })}
-          <LoadMore onClick={()=>{getArticleList(pageIndex)}}>阅读更多</LoadMore>
+          <LoadMore
+            onClick={() => {
+              getArticleList(pageIndex);
+            }}
+          >
+            阅读更多
+          </LoadMore>
         </HeaderLeft>
         <HeaderRight>
           {recommendList.map(recommend => {
@@ -56,9 +72,15 @@ class Home extends Component {
             );
           })}
         </HeaderRight>
-        {
-          showToTop ? <BackToTop onClick={()=>{this.goToTop()}}>回到顶部</BackToTop> : null
-        }
+        {showToTop ? (
+          <BackToTop
+            onClick={() => {
+              this.goToTop();
+            }}
+          >
+            回到顶部
+          </BackToTop>
+        ) : null}
       </HeaderWrapper>
     );
   }
@@ -67,16 +89,16 @@ class Home extends Component {
     this.props.getHomeInfoData();
   }
 
-  componentDidMount(){
-    window.addEventListener('scroll',this.props.scrollToTop)
+  componentDidMount() {
+    window.addEventListener("scroll", this.props.scrollToTop);
   }
 }
 
 const mapStateToProps = state => ({
   articleList: state.getIn(["home", "articleList"]),
   recommendList: state.getIn(["home", "recommendList"]),
-  showToTop:state.getIn(['home','showToTop']),
-  pageIndex:state.getIn(['home','pageIndex'])
+  showToTop: state.getIn(["home", "showToTop"]),
+  pageIndex: state.getIn(["home", "pageIndex"])
 });
 
 const mapDispatchToProps = dispatch => {
@@ -84,14 +106,14 @@ const mapDispatchToProps = dispatch => {
     getHomeInfoData() {
       dispatch(actionCreators.getHomeInfoData());
     },
-    getArticleList(pageIndex){
-      dispatch(actionCreators.getArticleListData(pageIndex))
+    getArticleList(pageIndex) {
+      dispatch(actionCreators.getArticleListData(pageIndex));
     },
-    scrollToTop(){
-      if (document.documentElement.scrollTop > 300 ){
-        dispatch(actionCreators.toggleShowToTop(true))
-      }else{
-        dispatch(actionCreators.toggleShowToTop(false))
+    scrollToTop() {
+      if (document.documentElement.scrollTop > 300) {
+        dispatch(actionCreators.toggleShowToTop(true));
+      } else {
+        dispatch(actionCreators.toggleShowToTop(false));
       }
     }
   };

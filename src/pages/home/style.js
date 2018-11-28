@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const HeaderWrapper = styled.div`
   width: 960px;
   margin: 20px auto;
+  margin-top:76px;
   background: green;
 `;
 
@@ -15,6 +16,8 @@ export const HeaderLeft = styled.div`
     width: 100%;
     height: 270px;
   }
+  a:link,a:visited{color:#444;text-decoration:none;}
+  a:hover{color:#ff0000;}
 `;
 
 export const ListItem = styled.div`

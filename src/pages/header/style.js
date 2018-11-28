@@ -3,13 +3,17 @@ import styled from "styled-components";
 import LogoImage from "../../statics/images/logo.png";
 
 export const HeaderWrapper = styled.div`
-  position: relative;
+  z-index:1;
+  position: fixed;
+  top:0;
+  left:0;
   height: 56px;
   width: 100%;
   border-bottom: 1px solid #eee;
+  background:#ffffff;
 `;
 
-export const Logo = styled.a`
+export const Logo = styled.div`
   float: left;
   display: inline-block;
   width: 100px;
@@ -25,8 +29,8 @@ export const Nav = styled.div`
   // background:green;
 `;
 
-export const NavItem = styled.a`
-  display: block;
+export const NavItem = styled.div`
+  // display: block;
   line-height: 56px;
   padding: 0 20px;
   height: 56px;
@@ -51,6 +55,7 @@ export const NavItem = styled.a`
       font-size: 24px;
     }
   }
+  a:link,a:visited{color:#969696;text-decoration:none;}
 `;
 
 export const SearchWrapper = styled.div`

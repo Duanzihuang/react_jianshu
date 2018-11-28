@@ -20,6 +20,10 @@ import { CSSTransition } from "react-transition-group";
 import { connect } from "react-redux";
 import { actionCreators } from "./store";
 
+import { actionCreators as loginActionCreators } from "../login/store";
+
+import { Link, withRouter } from "react-router-dom";
+
 /** 
 export default class Header extends React.Component {
   constructor(props) {
@@ -93,8 +97,6 @@ const getSearchArea = props => {
     }
   }
 
-  // console.log(focus,mouseEnter)
-
   if (focus || mouseEnter) {
     return (
       <SearchArea onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
@@ -105,15 +107,18 @@ const getSearchArea = props => {
               changePage(pageIndex, totalPage);
             }}
           >
-            <i id="spinId" className="iconfont switch">&#xe851;</i>换一批
+            <i id="spinId" className="iconfont switch">
+              &#xe851;
+            </i>
+            换一批
           </SearchInfoSwitch>
         </SearchInfo>
         <SearchList>
           {searchList.map(item => {
             if (item) {
               return <SearchItem key={item}>{item}</SearchItem>;
-            }else{
-              return null
+            } else {
+              return null;
             }
           })}
         </SearchList>
@@ -125,26 +130,38 @@ const getSearchArea = props => {
 };
 
 const Header = props => {
-  const { focus, searchFocus, list , searchBlur } = props;
+  const { focus, searchFocus, list, searchBlur, isLogin, logout } = props;
   return (
     <HeaderWrapper>
-      <Logo />
+      <Link to="/">
+        <Logo />
+      </Link>
       <Nav>
         <NavItem className="left home">首页</NavItem>
         <NavItem className="left download">下载App</NavItem>
         <NavItem className="right upperlower">
           <i className="iconfont">&#xe636;</i>
         </NavItem>
-        <NavItem className="right">登录</NavItem>
+        <NavItem className="right">
+          {isLogin ? (
+            <span onClick={() => logout(props)}>退出</span>
+          ) : (
+            <Link to="/login">登录</Link>
+          )}
+        </NavItem>
         <SearchWrapper>
           <CSSTransition in={focus} classNames="slide" timeout={200}>
             <Search
               onBlur={searchBlur}
-              onFocus={()=>{searchFocus(list)}}
+              onFocus={() => {
+                searchFocus(list);
+              }}
               className={focus ? "focus" : ""}
             />
           </CSSTransition>
-          <i className={focus ? "iconfont focus zoom" : "iconfont zoom"}>&#xe64d;</i>
+          <i className={focus ? "iconfont focus zoom" : "iconfont zoom"}>
+            &#xe64d;
+          </i>
           {getSearchArea(props)}
         </SearchWrapper>
       </Nav>
@@ -171,13 +188,14 @@ const mapStateToProps = state => {
     mouseEnter: state.getIn(["header", "mouseEnter"]),
     list: state.getIn(["header", "list"]),
     pageIndex: state.getIn(["header", "pageIndex"]),
-    totalPage: state.getIn(["header", "totalPage"])
+    totalPage: state.getIn(["header", "totalPage"]),
+    isLogin: state.getIn(["login", "isLogin"])
   };
 };
 
 const mapDispatchToProps = dispatch => ({
   searchFocus(list) {
-    if(list.size === 0) {
+    if (list.size === 0) {
       dispatch(actionCreators.getSearchList());
     }
     dispatch(actionCreators.searchFocus());
@@ -193,17 +211,18 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actionCreators.mouseLeave());
   },
   changePage(pageIndex, totalPage) {
-    const spinDom = document.getElementById("spinId")
+    const spinDom = document.getElementById("spinId");
     //获取之前的transform
-    let originAngle = spinDom.style.transform.replace(/[^0-9]/ig,'')
-  
-    if(originAngle){
-      originAngle = parseInt(originAngle)
-    }else{
-      originAngle = 0
+    let originAngle = spinDom.style.transform.replace(/[^0-9]/gi, "");
+
+    if (originAngle) {
+      originAngle = parseInt(originAngle);
+    } else {
+      originAngle = 0;
     }
 
-    spinDom.style = `transform:rotate(${originAngle+360}deg);transition:all .5s;transform-origin:center center;`
+    spinDom.style = `transform:rotate(${originAngle +
+      360}deg);transition:all .5s;transform-origin:center center;`;
 
     // console.log(pageIndex,totalPage)
     if (pageIndex < totalPage) {
@@ -211,10 +230,15 @@ const mapDispatchToProps = dispatch => ({
     } else {
       dispatch(actionCreators.changePage(1));
     }
+  },
+  logout(props) {
+    dispatch(loginActionCreators.changeLoginStatue(false));
+    // 通过编程式导航跳转到登录页面
+    props.history.push({pathname: '/login'})
   }
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Header);
+)(withRouter(Header));
