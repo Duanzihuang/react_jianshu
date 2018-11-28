@@ -193,5 +193,6 @@ export const Button = styled.div`
     background: #ea6f5a;
     color: #fff;
     width: 90px;
+    a:link,a:visited{color:white;text-decoration:none;}
   }
 `;

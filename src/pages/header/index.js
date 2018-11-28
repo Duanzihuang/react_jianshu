@@ -167,7 +167,9 @@ const Header = props => {
       </Nav>
       <ButtonWrapper>
         <Button className="writting">
-          <i className="iconfont">&#xe624;</i> 写文章
+          <Link to="/write">
+            <i className="iconfont">&#xe624;</i> 写文章
+          </Link>
         </Button>
         <Button>注册</Button>
       </ButtonWrapper>
